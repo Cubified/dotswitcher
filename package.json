@@ -1,0 +1,25 @@
+{
+  "name": "dotswitcher",
+  "version": "0.0.1",
+  "description": "A simple Node.js app to manage and switch between configuration files",
+  "main": "dotswitcher.js",
+  "scripts": {
+    "start": "node dotswitcher.js"
+  },
+  "keywords": [
+    "node",
+    "dotfiles",
+    "config",
+    "rice"
+  ],
+  "author": "CubeDoodl",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "fs-extra": "^4.0.0"
+  },
+  "bin": "dotswitcher.js",
+  "pkg": {
+	  "scripts": "node_modules/blessed/lib/widgets/*.js"
+  }
+}
