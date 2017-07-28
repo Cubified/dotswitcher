@@ -14,7 +14,7 @@ if(!fs.existsSync(`${utils.dir}/configs`)){
 	fs.mkdirSync(`${utils.dir}/configs`);
 }
 if(!fs.existsSync(`${utils.dir}/list`)){
-	fs.writeFileSync(`${utils.dir}/list`,fs.readFileSync(`${utils.dir}/list.default`).toString());
+	fs.writeFileSync(`${utils.dir}/list`,fs.readFileSync(`list.default`).toString());
 }
 
 views.mainMenu();

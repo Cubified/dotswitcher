@@ -20,6 +20,6 @@
   },
   "bin": "dotswitcher.js",
   "pkg": {
-	  "scripts": "node_modules/blessed/lib/widgets/*.js"
+    "scripts": "node_modules/blessed/lib/widgets/*.js"
   }
 }
