@@ -1,6 +1,6 @@
 {
   "name": "dotswitcher",
-  "version": "0.0.1",
+  "version": "0.0.1-testing",
   "description": "A simple Node.js app to manage and switch between configuration files",
   "main": "dotswitcher.js",
   "scripts": {
