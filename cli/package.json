@@ -1,0 +1,30 @@
+{
+  "name": "dotswitcher-cli",
+  "version": "0.0.1-testing",
+  "description": "A simple Node.js app to manage and switch between configuration files (CLI version)",
+  "main": "cli.js",
+  "scripts": {
+    "start": "node cli.js",
+    "build": "mkdir -p bin/ && pkg . --output bin/dotswitcher-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cubified/dotswitcher.git"
+  },
+  "keywords": [
+    "node",
+    "dotfiles",
+    "config",
+    "rice"
+  ],
+  "author": "CubeDoodl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cubified/dotswitcher/issues"
+  },
+  "homepage": "https://github.com/Cubified/dotswitcher#readme",
+  "dependencies": {
+    "commander": "^2.11.0"
+  },
+  "bin":"cli.js"
+}

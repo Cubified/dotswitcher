@@ -4,7 +4,12 @@
   "description": "A simple Node.js app to manage and switch between configuration files",
   "main": "dotswitcher.js",
   "scripts": {
-    "start": "node dotswitcher.js"
+    "start": "node dotswitcher.js",
+	"build": "mkdir -p bin/ && pkg . --output bin/dotswitcher"
+  },
+  "repository":{
+	"type": "git",
+	"url": "https://github.com/Cubified/dotswitcher"
   },
   "keywords": [
     "node",
@@ -14,6 +19,10 @@
   ],
   "author": "CubeDoodl",
   "license": "MIT",
+  "bugs":{
+	  "url":"https://github.com/Cubified/dotswitcher/issues"
+  },
+  "homepage":"https://github.com/Cubified/dotswitcher#readme",
   "dependencies": {
     "blessed": "^0.1.81",
     "fs-extra": "^4.0.0",
