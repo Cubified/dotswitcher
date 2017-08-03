@@ -16,7 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "blessed": "^0.1.81",
-    "fs-extra": "^4.0.0"
+    "fs-extra": "^4.0.0",
+    "tar": "^3.1.7"
   },
   "bin": "dotswitcher.js",
   "pkg": {

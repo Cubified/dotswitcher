@@ -169,6 +169,7 @@ let views = {
         form.on('submit', (data) => {
             if (input.getValue().trim() !== '') {
                 box.tags = true;
+				box.setContent(`{center}Saving and compressing dotfiles (this could take a while)...{/center}`);
                 let val = dotswitcher.save(input.getValue().trim());
                 switch (val) {
                     case 0:
@@ -236,7 +237,7 @@ let views = {
             }
         });
         dotswitcher.list().forEach((e) => {
-            optionsList.add(e);
+            optionsList.add(e.replace(/\.tgz$/g,''));
         });
         optionsList.add('--------------------');
         optionsList.add('Return to main menu');
@@ -338,4 +339,3 @@ let views = {
 };
 
 module.exports = views;
-
