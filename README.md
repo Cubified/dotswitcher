@@ -1,6 +1,6 @@
 ## dotswitcher v0.0.1-testing
 
-A simple terminal-based GUI to manage and switch between configuration files on one machine.
+A simple terminal-based GUI to manage and switch between multiple sets of configuration files on one machine.
 
 ### Acquiring and Running
 
