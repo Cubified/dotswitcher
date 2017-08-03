@@ -5,6 +5,7 @@ A simple terminal-based GUI to manage and switch between configuration files on 
 ### Acquiring and Running
 
     > git clone https://github.com/Cubified/dotswitcher
+	> cd dotswitcher/
     > npm install && npm start
 
 ### Screenshot
@@ -17,15 +18,14 @@ Dotswitcher can be packaged into a single executable quickly and easily using [p
 
     > npm install -g pkg
     > cd dotswitcher/
-    > mkdir bin/
-    > pkg . --output bin/dotswitcher
+    > npm run build
 
 ### Planned Features
 
 This is a project I put together in less than a day, so there's still some things I'd like to add, such as:
 
 - Regex-based blacklisting/whitelisting
-- A CLI
+- A CLI (added!)
 - Compression of saved configurations (added!)
 
 ### Syncing Across Multiple Systems
