@@ -2,7 +2,7 @@
 
 A simple terminal-based GUI to manage and switch between configuration files on one machine.
 
-### Acquiring and setting up the code
+### Acquiring and Running
 
     > git clone https://github.com/Cubified/dotswitcher
     > npm install && npm start
@@ -26,7 +26,24 @@ This is a project I put together in less than a day, so there's still some thing
 
 - Regex-based blacklisting/whitelisting
 - A CLI
-- Compression of saved configurations
+- Compression of saved configurations (added!)
+
+### Syncing Across Multiple Systems
+
+While dotswitcher does not support syncing natively, it is extremely easy to do this yourself with a git repo.
+
+    > cd ~/.dotswitcher
+	> git init
+	> git add .
+	> git commit -am "Add dotswitcher files"
+	> git remote add origin "https://github.com/YourUsername/MyDotfiles"
+	> git remote -v
+	> git push origin master
+
+From a second computer with dotswitcher already configured:
+
+    > git clone "https://github.com/YourUsername/MyDotfiles" ~/.dotswitcher
+	> ./path/to/dotswitcher
 
 ### License
 
