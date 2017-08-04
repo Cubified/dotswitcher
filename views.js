@@ -170,6 +170,7 @@ let views = {
             if (input.getValue().trim() !== '') {
                 box.tags = true;
 				box.setContent(`{center}Saving and compressing dotfiles (this could take a while)...{/center}`);
+				screen.render();
                 let val = dotswitcher.save(input.getValue().trim());
                 switch (val) {
                     case 0:
