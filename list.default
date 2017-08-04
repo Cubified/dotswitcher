@@ -1,4 +1,7 @@
 {
+	"importantnote":"Files should not contain parent directories (eg. chromium (correct) vs. .config/chromium (incorrect)).  This is due to the way dotswitcher organizes files to be copied, but I am looking into fixing it soon"
 	"type":"blacklist",
-	"files":[]
+	"files":[
+		".cache"
+	]
 }
