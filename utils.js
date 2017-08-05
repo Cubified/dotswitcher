@@ -38,7 +38,7 @@ let utils = {
             files = utils.whitelist();
         let out = [];
         arr.forEach((e) => {
-            if ((useList ? (type ? files.indexOf(parent+'/'+e.name) > -1 : files.indexOf(parent+'/'+e.name) === -1) : true)) {
+            if ((useList ? (type ? files.indexOf(e.name) > -1 : files.indexOf(e.name) === -1) : true)) {
                 if (e.type === 'file') {
                     if (o) {
                         o.push(append ? `${parent}/${e.name}` : e.name);
