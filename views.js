@@ -174,7 +174,7 @@ let views = {
                 let val = dotswitcher.save(input.getValue().trim());
                 switch (val) {
                     case 0:
-                        box.setContent(`{center}Saved dotfile configuration as "${input.getValue().trim()}"{/center}`);
+                        box.setContent(`{center}Saved dotfile configuration as "${input.getValue().trim()}.tgz"{/center}`);
                         break;
                     case 1:
                         box.setContent(`{center}A dotfile configuration already exists with this name{/center}`);
