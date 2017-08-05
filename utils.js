@@ -33,20 +33,20 @@ let utils = {
         });
         return out;
     },
-    relativeToAbsolute: (arr, parent, o, append) => {
+    relativeToAbsolute: (arr, parent, o, append, useList) => {
         const type = utils.type(),
             files = utils.whitelist();
         let out = [];
         arr.forEach((e) => {
-            if (type ? files.indexOf(e.name) > -1 : files.indexOf(e.name) === -1) {
+            if ((useList ? (type ? files.indexOf(parent+'/'+e.name) > -1 : files.indexOf(parent+'/'+e.name) === -1) : true)) {
                 if (e.type === 'file') {
                     if (o) {
-                        o.push(append?`${parent}/${e.name}`:e.name);
+                        o.push(append ? `${parent}/${e.name}` : e.name);
                     } else {
-                        out.push(append?`${parent}/${e.name}`:e.name);
+                        out.push(append ? `${parent}/${e.name}` : e.name);
                     }
                 } else {
-                    utils.relativeToAbsolute(e.files, append?`${parent}/${e.name}`:e.name, o || out, true);
+                    utils.relativeToAbsolute(e.files, append ? `${parent}/${e.name}` : e.name, o || out, true, false);
                 }
             }
         });
@@ -56,11 +56,11 @@ let utils = {
         if (!fs.existsSync(`${utils.dir}/configs/${name}.tgz`)) {
             let type = utils.type(),
                 files = utils.whitelist(),
-                includes = utils.relativeToAbsolute(utils.readRecursive(process.env.HOME, true), process.env.HOME, false);
+                includes = utils.relativeToAbsolute(utils.readRecursive(process.env.HOME, true), process.env.HOME, null, false, true);
             tar.c({
                 gzip: true,
                 sync: true,
-				cwd: process.env.HOME,
+                cwd: process.env.HOME,
                 file: `${utils.dir}/configs/${name}.tgz`
             }, includes);
             return 0;
