@@ -7,7 +7,7 @@ const fs = require('fs-extra'),
 
 let utils = {
     dir: `${process.env.HOME}/.dotswitcher`,
-    readRecursive: (directory, useList) => {
+    readRecursive: (directory) => {
         const type = utils.type(),
             files = utils.whitelist();
 
@@ -15,48 +15,58 @@ let utils = {
             out = [];
         tmp.forEach((e) => {
             try {
-                if ((useList ? (e.split('')[0] === '.' && e !== '.dotswitcher' && (type ? files.indexOf(e) > -1 : files.indexOf(e) === -1)) : true)) {
-                    if (fs.statSync(`${directory}/${e}`).isDirectory()) {
-                        out.push({
-                            name: e,
-                            type: 'dir',
-                            files: utils.readRecursive(`${directory}/${e}`, false)
-                        });
-                    } else {
-                        out.push({
-                            name: e,
-                            type: 'file'
-                        });
-                    }
+                if (fs.statSync(`${directory}/${e}`).isDirectory()) {
+                    out.push({
+                        name: e,
+                        type: 'dir',
+                        files: utils.readRecursive(`${directory}/${e}`)
+                    });
+                } else {
+                    out.push({
+                        name: e,
+                        type: 'file'
+                    });
                 }
             } catch (e) { /* Don't have permission, ignoring */ }
         });
         return out;
     },
-    relativeToAbsolute: (arr, parent, o, append, useList) => {
+    relativeToAbsolute: (arr, parent, o, append) => {
         const type = utils.type(),
             files = utils.whitelist();
         let out = [];
         arr.forEach((e) => {
-            if ((useList ? (type ? files.indexOf(e.name) > -1 : files.indexOf(e.name) === -1) : true)) {
-                if (e.type === 'file') {
-                    if (o) {
-                        o.push(append ? `${parent}/${e.name}` : e.name);
-                    } else {
-                        out.push(append ? `${parent}/${e.name}` : e.name);
-                    }
+            if (e.type === 'file') {
+                if (o) {
+                    o.push(append ? `${parent}/${e.name}` : e.name);
                 } else {
-                    utils.relativeToAbsolute(e.files, append ? `${parent}/${e.name}` : e.name, o || out, true, false);
+                    out.push(append ? `${parent}/${e.name}` : e.name);
                 }
+            } else {
+                utils.relativeToAbsolute(e.files, append ? `${parent}/${e.name}` : e.name, o || out, true);
             }
         });
         return out;
     },
+    determineIncludes: () => {
+        const type = utils.type(),
+            list = utils.whitelist();
+
+        let tree = utils.readRecursive(process.env.HOME),
+            files = utils.relativeToAbsolute(tree, process.env.HOME),
+            includes = [];
+        files.forEach((e) => {
+            list.forEach((el) => {
+                if (e.split('')[0] === '.' && e.indexOf('.dotswitcher') === -1 && (type ? e.indexOf(el) > -1 : e.indexOf(el) === -1)) {
+                    includes.push(e);
+                }
+            });
+        });
+        return includes;
+    },
     save: (name) => {
         if (!fs.existsSync(`${utils.dir}/configs/${name}.tgz`)) {
-            let type = utils.type(),
-                files = utils.whitelist(),
-                includes = utils.relativeToAbsolute(utils.readRecursive(process.env.HOME, true), process.env.HOME, null, false, true);
+            let includes = utils.determineIncludes(); 
             tar.c({
                 gzip: true,
                 sync: true,

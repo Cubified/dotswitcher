@@ -1,4 +1,4 @@
-## dotswitcher v0.0.1-testing
+## dotswitcher v0.5.0
 
 A simple terminal-based GUI to manage and switch between multiple sets of configuration files on one machine.
 
@@ -24,7 +24,7 @@ Dotswitcher can be packaged into a single executable quickly and easily using [p
 
 This is a project I put together in less than a day, so there's still some things I'd like to add, such as:
 
-- Fix whitelist/blacklist functionality, as it's somewhat useless and broken right now
+- Fix whitelist/blacklist functionality, as it's somewhat useless and broken right now (fixed!)
 - Regex-based blacklisting/whitelisting
 - A CLI (added!)
 - Compression of saved configurations (added!)

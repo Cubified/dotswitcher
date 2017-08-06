@@ -14,7 +14,7 @@ if(!fs.existsSync(`${utils.dir}/list`)){
 let program = require('commander');
 
 program
-	.version('0.0.1-testing')
+	.version('0.5.0')
 	.option('-s, --save [name]', 'save the current dotfile configuration')
 	.option('-l, --load [name]', 'load a saved dotfile configuration')
 	.option('-v, --view', 'view the whitelist/blacklist')

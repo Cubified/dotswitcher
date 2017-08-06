@@ -1,6 +1,6 @@
 {
   "name": "dotswitcher-cli",
-  "version": "0.0.1-testing",
+  "version": "0.5.0",
   "description": "A simple Node.js app to manage and switch between configuration files (CLI version)",
   "main": "cli.js",
   "scripts": {

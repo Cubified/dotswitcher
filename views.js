@@ -27,7 +27,7 @@ let views = {
             top: 1,
             tags: true,
             bg: '#888888',
-            content: '{center}dotswitcher v0.0.1-testing{/center}'
+            content: '{center}dotswitcher v0.5.0{/center}'
         });
         let optionsList = blessed.list({
             parent: box,
@@ -218,7 +218,7 @@ let views = {
             top: 1,
             tags: true,
             bg: '#888888',
-            content: '{center}dotswitcher v0.0.1-testing{/center}'
+            content: '{center}dotswitcher v0.5.0{/center}'
         });
         let optionsList = blessed.list({
             parent: box,
