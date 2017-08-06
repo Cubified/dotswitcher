@@ -1,4 +1,4 @@
-## dotswitcher-cli v0.0.1-testing
+## dotswitcher-cli v0.5.0
 
 A simple CLI application to manage and switch between configuration files on one machine.
 
