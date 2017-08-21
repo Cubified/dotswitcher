@@ -24,10 +24,8 @@ Dotswitcher can be packaged into a single executable quickly and easily using [p
 
 This is a project I put together in less than a day, so there's still some things I'd like to add, such as:
 
-- Fix whitelist/blacklist functionality, as it's somewhat useless and broken right now (fixed!)
+- Rewrite in another language (node is very resource heavy and unnecessary in this situation)
 - Regex-based blacklisting/whitelisting
-- A CLI (added!)
-- Compression of saved configurations (added!)
 
 ### Syncing Across Multiple Systems
 
