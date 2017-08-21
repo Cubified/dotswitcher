@@ -26,5 +26,5 @@
   "dependencies": {
     "commander": "^2.11.0"
   },
-  "bin":"cli.js"
+  "bin": "cli.js"
 }
