@@ -31,7 +31,11 @@ if(typeof program.save === 'string'){
 }
 
 if(typeof program.load === 'string'){
-	utils.load(program.load);
+	if(!utils.load(program.load)){
+		console.log(`Successfully loaded config "${program.load}"`);
+	} else{
+		console.log(`Unable to load config: "${program.load}.tgz" does not exist in ${utils.dir}/configs`);
+	}
 } else if(!program.load === undefined){
 	program.help();
 }

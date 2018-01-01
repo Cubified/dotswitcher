@@ -1,5 +1,7 @@
 ## dotswitcher v0.5.0
 
+### Note: Please use dotswitcher.sh rather than the original node version(s). While the TUI and CLI node versions are still fully functional, using node is absolutely unnecessary for this project
+
 A simple terminal-based GUI to manage and switch between multiple sets of configuration files on one machine.
 
 ### Acquiring and Running
@@ -24,7 +26,7 @@ Dotswitcher can be packaged into a single executable quickly and easily using [p
 
 This is a project I put together in less than a day, so there's still some things I'd like to add, such as:
 
-- Rewrite in another language (node is very resource heavy and unnecessary in this situation)
+- (Done!) Rewrite in another language (node is very resource heavy and unnecessary in this situation)
 - Regex-based blacklisting/whitelisting
 
 ### Syncing Across Multiple Systems
@@ -49,7 +51,7 @@ From a second computer with dotswitcher already configured:
 As with syncing functionality, dotswitcher does not natively support acquiring dotfiles from a remote location (such as another user's git repo), but it is very easy to do yourself:
 
     > git clone "https://github.com/AnotherUser/dotfiles" ~/.dotswitcher/configs/AnotherUser
-	> tar -cf ~/.dotswitcher/configs/AnotherUser.tgz ~/.dotswitcher/configs/AnotherUser
+	> tar -czf ~/.dotswitcher/configs/AnotherUser.tgz ~/.dotswitcher/configs/AnotherUser
 	> rm -rf ~/.dotswitcher/configs/AnotherUser
 
 ### License

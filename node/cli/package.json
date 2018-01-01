@@ -2,10 +2,10 @@
   "name": "dotswitcher-cli",
   "version": "0.5.0",
   "description": "A simple Node.js app to manage and switch between configuration files (CLI version)",
-  "main": "cli.js",
+  "main": "dotswitcher.js",
   "scripts": {
     "start": "node cli.js",
-    "build": "mkdir -p bin/ && pkg . --output bin/dotswitcher-cli"
+    "build": "mkdir -p bin/ && pkg . --output bin/dotswitcher"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,5 @@
   "dependencies": {
     "commander": "^2.11.0"
   },
-  "bin": "cli.js"
+  "bin": "dotswitcher.js"
 }

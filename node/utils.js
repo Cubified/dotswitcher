@@ -7,29 +7,32 @@ const fs = require('fs-extra'),
 
 let utils = {
     dir: `${process.env.HOME}/.dotswitcher`,
-    readRecursive: (directory) => {
+    readRecursive: (directory,depth) => {
         const type = utils.type(),
             files = utils.whitelist();
 
-        let tmp = fs.readdirSync(directory),
-            out = [];
-        tmp.forEach((e) => {
-            try {
-                if (fs.statSync(`${directory}/${e}`).isDirectory()) {
-                    out.push({
-                        name: e,
-                        type: 'dir',
-                        files: utils.readRecursive(`${directory}/${e}`)
-                    });
-                } else {
-                    out.push({
-                        name: e,
-                        type: 'file'
-                    });
-                }
-            } catch (e) { /* Don't have permission, ignoring */ }
-        });
-        return out;
+		if(depth < 3){
+        	let tmp = fs.readdirSync(directory),
+				out = [];
+        	tmp.forEach((e) => {
+        	    try {
+        	        if (fs.statSync(`${directory}/${e}`).isDirectory()) {
+        	            out.push({
+        	                name: e,
+        	                type: 'dir',
+        	                files: utils.readRecursive(`${directory}/${e}`,depth+1)
+        	            });
+        	        } else {
+        	            out.push({
+        	                name: e,
+        	                type: 'file'
+        	            });
+        	        }
+        	    } catch (e) { /* Don't have permission, ignoring */ }
+    	    });
+	        return out;
+		}
+		return [];
     },
     relativeToAbsolute: (arr, parent, o, append) => {
         const type = utils.type(),
@@ -52,7 +55,7 @@ let utils = {
         const type = utils.type(),
             list = utils.whitelist();
 
-        let tree = utils.readRecursive(process.env.HOME),
+        let tree = utils.readRecursive(process.env.HOME,0),
             files = utils.relativeToAbsolute(tree, process.env.HOME),
             includes = [];
         files.forEach((e) => {
@@ -66,7 +69,7 @@ let utils = {
     },
     save: (name) => {
         if (!fs.existsSync(`${utils.dir}/configs/${name}.tgz`)) {
-            let includes = utils.determineIncludes(); 
+            let includes = utils.determineIncludes();
             tar.c({
                 gzip: true,
                 sync: true,
