@@ -50,12 +50,12 @@ save() {
 }
 
 load() {
-	if [[ ! -f "~/.dotswitcher/configs/$1.tgz" ]]; then
+	cd ~
+	if [[ ! -f ".dotswitcher/configs/$1.tgz" ]]; then
 		log "Error: file \"$1.tgz\" does not exist in ~/.dotswitcher/configs"
 		exit
 	fi
-	cd ~
-	tar xzf ".dotswitcher/configs/$1.tgz" .
+	tar xzf ".dotswitcher/configs/$1.tgz"
 }
 
 list() {
