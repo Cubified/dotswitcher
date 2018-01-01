@@ -2,6 +2,15 @@
 
 dotswitcher rewritten in bash
 
+### Dependencies
+
+- [jq](https://stedolan.github.io/jq/)
+- GNU tar (bsdtar & others may work, not tested)
+
+### TODO
+
+- Fix indentation
+
 ### Syncing Across Multiple Systems
 
 While dotswitcher does not support syncing natively, it is extremely easy to do this yourself with a git repo.
