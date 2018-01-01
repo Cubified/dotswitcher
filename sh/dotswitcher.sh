@@ -18,6 +18,7 @@ help() {
   -s, --save <config>		save the current configuration\n\
   -l, --load <config>		load a saved configuration\n\
   -v, --view			view the blacklist/whitelist\n\
+  -c, --configs			list saved configurations\n\
   -h, --help			display this help and exit\n"
 }
 
@@ -66,6 +67,14 @@ list() {
 	jq '.files' ~/.dotswitcher/list -r -M | sed 's/\"//g' | sed 's/\[//' | sed 's/\]//' | xargs | sed 's/, /\n/g'
 }
 
+configs() {
+	cd ~/.dotswitcher/configs
+	log "Saved configurations:"
+	for f in *.tgz; do
+		log "- ${f%.tgz}"
+	done
+}
+
 setup
 
 log "dotswitcher v$VER"
@@ -77,7 +86,7 @@ if [[ "$1" = "" ]]; then
 	help
 fi
 
-OPTIONS=`getopt -o "s:l:vh" -l "save:,load:,view,help" -n "dotswitcher" -- "$@"`
+OPTIONS=`getopt -o "s:l:vch" -l "save:,load:,view,configs,help" -n "dotswitcher" -- "$@"`
 
 while true; do
 	case "$1" in
@@ -103,6 +112,10 @@ while true; do
 			;;
 		-v | --view)
 			list
+			shift
+			;;
+		-c | --configs)
+			configs
 			shift
 			;;
 		-h | --help)
