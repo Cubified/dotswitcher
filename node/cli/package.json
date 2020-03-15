@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Cubified/dotswitcher#readme",
   "dependencies": {
-    "commander": "^2.11.0"
+    "commander": "^5.0.0"
   },
   "bin": "dotswitcher.js"
 }
